@@ -32,6 +32,6 @@ class AZTOOLS_PT_Shelf_02(bpy.types.Panel):
 
 uiclasses = (
     AZTOOLS_PT_Shelf_00,
-    # AZTOOLS_PT_Shelf_01,
+    AZTOOLS_PT_Shelf_01,
     AZTOOLS_PT_Shelf_02,
 )

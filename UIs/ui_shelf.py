@@ -59,6 +59,12 @@ def shelfMenu(self, menu_type):
     i = 0
     for exec in self.execs:
         exec_name = os.path.splitext(os.path.basename(exec))[0]
+
+        if exec_name.startswith("devshelf_"):
+            row.alert = True
+        else:
+            row.alert = False
+
         exec_name = exec_name.removeprefix("shelf_")
         exec_name = exec_name.removeprefix("devshelf_")
 
@@ -66,6 +72,7 @@ def shelfMenu(self, menu_type):
             exec_name = exec_name.removeprefix(menu_type + "_")
 
             command = row.operator("object.aztools_shelf", text=func_name.camel_to_snake(exec_name))
+
             exec_list.append(command)
             exec_list[i].path = exec
             i += 1
