@@ -12,6 +12,15 @@ Blender3.4.1以降<br>
 
 <br>
 
+## 詳細な使い方
+Qiitaにインストール方法、使い方の最新情報をアップしていますので、ぜひご覧ください。<br>
+https://qiita.com/arizeworks/items/d4dd99b809e198b9cf84
+
+
+<br>
+
+<br>
+
 
 ## インストール方法
 
