@@ -23,7 +23,7 @@ def AZToolsSHELF(self, context):
     for exec in self.execs:
         exec_name = os.path.splitext(os.path.basename(exec))[0]
 
-        if exec_name.startswith("shelf_"):
+        if exec_name.startswith("shelf_") or exec_name.startswith("devshelf_"):
             exec_name_list = exec_name.split('_')
             if len(exec_name_list) >= 3:
                 menu_type = exec_name_list[1]
@@ -60,6 +60,7 @@ def shelfMenu(self, menu_type):
     for exec in self.execs:
         exec_name = os.path.splitext(os.path.basename(exec))[0]
         exec_name = exec_name.removeprefix("shelf_")
+        exec_name = exec_name.removeprefix("devshelf_")
 
         if exec_name.startswith(menu_type + "_"):
             exec_name = exec_name.removeprefix(menu_type + "_")
