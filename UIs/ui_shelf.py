@@ -14,7 +14,7 @@ def AZToolsSHELF(self, context):
     row = box.row(align=True)
     row.scale_y = 1.5
     open_folder = row.operator("object.aztools_shelf_folder")
-    open_folder.path = bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf"
+    open_folder.path = bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf\\Shelf"
 
     self.execs = glob.glob(bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf\\Shelf\\*")
 
