@@ -7,7 +7,15 @@ def readPython(path):
 
 
 def ExecFunc(path):
-    command = readPython(path)
+    command = '''
+    import bpy
+    import bmesh
+    context = bpy.context
+
+    '''
+    command = textwrap.dedent(command)
+
+    command += readPython(path)
     command = textwrap.dedent(command)
     # print(command)
     try:
