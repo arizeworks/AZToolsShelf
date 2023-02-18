@@ -20,7 +20,8 @@ Blender3.4.1以降<br>
 
 <br>
 
-zipをダウンロードしてBlenderの環境設定からインストールボタンを押して、<br>
+zipをダウンロードした後<br>
+Blenderの環境設定からインストールボタンを押して、<br>
 先ほどダウンロードしたzipファイルを指定してください<br>
 ![image.png](https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/704965/a46099e1-4d81-a5a0-c247-36b2821ce30b.png)
 
