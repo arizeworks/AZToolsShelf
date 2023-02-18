@@ -3,11 +3,11 @@ import importlib
 
 bl_info = {
     "name": "AZTools Shelf",
-    "version": (0, 1),
+    "version": (1, 0),
     "blender": (3, 4, 1),
     "author": "Arizeworks",
     "location": "3D View > N-Panel / T-Panel > AZTools Shelf",
-    "warning": "Warning: this addon is still developping",
+    # "warning": "Warning: this addon is still developping",
     "description": "AZTools",
     "category": "AZTools",
     "url": "https://github.com/arizeworks/",
