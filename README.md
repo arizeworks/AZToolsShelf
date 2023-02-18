@@ -2,6 +2,8 @@
 
 BlenderにMayaライクなシェルフを追加するアドオン<br>
 
+<img width="400" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/704965/9e821976-15ed-5764-31b9-a2328c6d81c6.png">
+
 <br>
 
 ## サポート環境
