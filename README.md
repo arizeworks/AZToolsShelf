@@ -6,6 +6,11 @@ BlenderにMayaライクなシェルフを追加するアドオン<br>
 
 <br>
 
+## ライセンス
+
+GPL-3.0 license<br>
+<br>
+
 ## サポート環境
 
 Blender3.4.1以降<br>
