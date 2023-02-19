@@ -16,7 +16,7 @@ def AZToolsSHELF(self, context):
     open_folder = row.operator("object.aztools_shelf_folder")
     open_folder.path = bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf\\Shelf"
 
-    self.execs = glob.glob(bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf\\Shelf\\*")
+    self.execs = glob.glob(bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf\\Shelf\\*.py")
 
     menus = []
 
