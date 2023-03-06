@@ -15,7 +15,9 @@ class AZTOOLS_OT_Shelf(bpy.types.Operator):
 
     def execute(self, context):
 
-        if not self.path in ["\\","/"]:
+        if "\\" in self.path or "/" in self.path:
+            pass
+        else:
             self.path = shelf_path + os.sep + self.path
 
         path = os.path.expandvars(self.path)
@@ -36,10 +38,13 @@ class AZTOOLS_OT_Open_Shelf_Folder(bpy.types.Operator):
 
     def execute(self, context):
 
-        if not self.path in ["\\","/"]:
+        if "\\" in self.path or "/" in self.path:
+            pass
+        else:
             self.path = shelf_path + os.sep + self.path
 
         path = os.path.expandvars(self.path)
+
         path = path.replace("/", os.sep)
         path = path.replace("\\", os.sep)
 
