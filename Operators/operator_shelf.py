@@ -1,7 +1,9 @@
 import bpy
 import subprocess
 from ..Functions import func_shelf
+import os
 
+shelf_path = os.path.expandvars(bpy.utils.user_resource('SCRIPTS') + r"\addons\AZToolsShelf\Shelf")
 
 class AZTOOLS_OT_Shelf(bpy.types.Operator):
     bl_idname = "object.aztools_shelf"
@@ -12,7 +14,13 @@ class AZTOOLS_OT_Shelf(bpy.types.Operator):
 
     def execute(self, context):
 
-        func_shelf.ExecFunc(self.path)
+        if not self.path.startswith(shelf_path):
+            self.path = shelf_path + "\\" + self.path
+
+        path = os.path.expandvars(self.path)
+        path = path.replace("/", r"\\")
+
+        func_shelf.ExecFunc(path)
 
         return {'FINISHED'}
 
@@ -26,7 +34,13 @@ class AZTOOLS_OT_Open_Shelf_Folder(bpy.types.Operator):
 
     def execute(self, context):
 
-        subprocess.Popen(["explorer", self.path])
+        if not self.path.startswith(shelf_path):
+            self.path = shelf_path + "\\" + self.path
+
+        path = os.path.expandvars(self.path)
+        path = path.replace("/", r"\\")
+
+        subprocess.Popen(["explorer", path])
 
         return {'FINISHED'}
 

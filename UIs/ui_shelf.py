@@ -5,6 +5,9 @@ import bpy
 import os
 import glob
 
+import os
+import bpy
+
 
 def AZToolsSHELF(self, context):
 
@@ -14,9 +17,10 @@ def AZToolsSHELF(self, context):
     row = box.row(align=True)
     row.scale_y = 1.5
     open_folder = row.operator("object.aztools_shelf_folder")
-    open_folder.path = bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf\\Shelf"
 
-    self.execs = glob.glob(bpy.utils.user_resource('SCRIPTS') + "\\addons\\AZToolsShelf\\Shelf\\*.py")
+    shelf_path = os.path.expandvars(bpy.utils.user_resource('SCRIPTS') + r"\addons\AZToolsShelf\Shelf")
+    open_folder.path = shelf_path
+    self.execs = glob.glob(shelf_path+r"\*.py")
 
     menus = []
 
@@ -74,7 +78,7 @@ def shelfMenu(self, menu_type):
             command = row.operator("object.aztools_shelf", text=func_name.camel_to_snake(exec_name))
 
             exec_list.append(command)
-            exec_list[i].path = exec
+            exec_list[i].path = os.path.basename(exec)
             i += 1
 
             if not i % 2:
