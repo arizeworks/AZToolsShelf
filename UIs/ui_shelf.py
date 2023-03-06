@@ -29,13 +29,13 @@ def AZToolsSHELF(self, context):
                 menu_type = exec_name_list[1]
                 if menu_type not in menus:
                     if self.bl_space_type == "IMAGE_EDITOR":
-                        if menu_type == "uv":
+                        if menu_type in ["uv","image"]:
                             shelfMenu(self, menu_type)
                             menus.append(menu_type)
                         else:
                             pass
                     else:
-                        if menu_type == "uv":
+                        if menu_type == ["uv","image"]:
                             pass
                         else:
                             shelfMenu(self, menu_type)
