@@ -3,7 +3,8 @@ import subprocess
 from ..Functions import func_shelf
 import os
 
-shelf_path = os.path.expandvars(bpy.utils.user_resource('SCRIPTS') + r"\addons\AZToolsShelf\Shelf")
+shelf_path = os.path.expandvars(bpy.utils.user_resource('SCRIPTS') + r"\addons\AZToolsShelf\Shelf").replace("/", os.sep)
+shelf_path = shelf_path.replace("\\", os.sep)
 
 class AZTOOLS_OT_Shelf(bpy.types.Operator):
     bl_idname = "object.aztools_shelf"
@@ -14,11 +15,12 @@ class AZTOOLS_OT_Shelf(bpy.types.Operator):
 
     def execute(self, context):
 
-        if not self.path.startswith(shelf_path):
-            self.path = shelf_path + "\\" + self.path
+        if not self.path in ["\\","/"]:
+            self.path = shelf_path + os.sep + self.path
 
         path = os.path.expandvars(self.path)
-        path = path.replace("/", r"\\")
+        path = path.replace("/", os.sep)
+        path = path.replace("\\", os.sep)
 
         func_shelf.ExecFunc(path)
 
@@ -34,11 +36,12 @@ class AZTOOLS_OT_Open_Shelf_Folder(bpy.types.Operator):
 
     def execute(self, context):
 
-        if not self.path.startswith(shelf_path):
-            self.path = shelf_path + "\\" + self.path
+        if not self.path in ["\\","/"]:
+            self.path = shelf_path + os.sep + self.path
 
         path = os.path.expandvars(self.path)
-        path = path.replace("/", r"\\")
+        path = path.replace("/", os.sep)
+        path = path.replace("\\", os.sep)
 
         subprocess.Popen(["explorer", path])
 
