@@ -1,16 +1,15 @@
 from ..Functions import func_name
-from ..data_path import aztoolspath
+from .. import data_path
 
 import bpy
 import os
 import glob
 
-import os
-import bpy
+
+SHELF_PATH = os.path.expandvars(bpy.utils.user_resource("SCRIPTS") + r"\addons\AZToolsShelf\Shelf")
 
 
-def AZToolsSHELF(self, context, mode=False):
-
+def AZToolsShelf(self, context, mode=False):
     # Menuモード
     if mode:
         layout = self.layout
@@ -30,57 +29,60 @@ def AZToolsSHELF(self, context, mode=False):
 
     open_folder = row.operator("object.aztools_shelf_folder")
 
-    shelf_path = os.path.expandvars(bpy.utils.user_resource('SCRIPTS') + r"\addons\AZToolsShelf\Shelf")
-    open_folder.path = shelf_path
-    self.execs = glob.glob(shelf_path + r"\*.py")
+    open_folder.path = SHELF_PATH
+    self.execs = glob.glob(SHELF_PATH + r"\*.py")
 
+
+    groups = ["None"]
     menus = []
-
     for exec in self.execs:
         exec_name = os.path.splitext(os.path.basename(exec))[0]
-        exec_name_list = exec_name.split('_')
+        exec_name_list = exec_name.split("_")
 
         if exec_name.startswith("shelf_") or exec_name.startswith("devshelf_"):
 
-            # アンダーバー2つの場合
+            # アンダーバー3つ以上の場合（グループモード）
+            if len(exec_name_list) > 3:
+                group_type = exec_name_list[1]
+                menu_type = exec_name_list[2]
+                button_name = exec_name_list[3]
+
+            # アンダーバー2つの場合（レガシーモード）
             if len(exec_name_list) == 3:
+                group_type = "None"
                 menu_type = exec_name_list[1]
-                if menu_type not in menus:
+                button_name = exec_name_list[2]
 
-                    # Menuモード
-                    if mode:
-                        shelfMenu(self, menu_type, mode)
-                        menus.append(menu_type)
+            # メニュー描画
+            if group_type not in groups:
+                menus.append(group_type)
 
-                    # Panelモード
-                    else:
-                        if self.bl_space_type == "IMAGE_EDITOR":
-                            if menu_type in ["uv", "image"]:
-                                shelfMenu(self, menu_type, mode)
-                                menus.append(menu_type)
-                            else:
-                                pass
+            if menu_type not in menus:
+                # Menuモード
+                if mode:
+                    shelfMenu(self, menu_type, mode)
+                    menus.append(menu_type)
+
+                # Panelモード
+                else:
+                    if self.bl_space_type == "IMAGE_EDITOR":
+                        if menu_type in ["uv", "image"]:
+                            shelfMenu(self, menu_type, mode)
+                            menus.append(menu_type)
                         else:
-                            if menu_type == ["uv", "image"]:
-                                pass
-                            else:
-                                shelfMenu(self, menu_type, mode)
-                                menus.append(menu_type)
+                            pass
+                    else:
+                        if menu_type == ["uv", "image"]:
+                            pass
+                        else:
+                            shelfMenu(self, menu_type, mode)
+                            menus.append(menu_type)
 
-            # # アンダーバー3つ以上の場合
-            # elif len(exec_name_list) > 3:
-            #     group_type = exec_name_list[1]
-            #     menu_type = exec_name_list[2]
-
-            else:
-                print('Please review the naming convention. exp)"shelf_object_" :' + exec_name)
         else:
             print('Please Add Prefix. exp)"shelf_object_" :' + exec_name)
 
 
-
 def shelfMenu(self, menu_type, mode=False):
-
     # Menuモード
     if mode:
         layout = self.layout
@@ -96,25 +98,29 @@ def shelfMenu(self, menu_type, mode=False):
         row = box.row(align=True)
         row.scale_y = 1.5
 
-
-
     exec_list = []
     i = 0
     for exec in self.execs:
         exec_name = os.path.splitext(os.path.basename(exec))[0]
-
         if exec_name.startswith("devshelf_"):
             row.alert = True
         else:
             row.alert = False
 
-        exec_name = exec_name.removeprefix("shelf_")
-        exec_name = exec_name.removeprefix("devshelf_")
+        exec_name_list = exec_name.split("_")
+        # アンダーバー3つ以上の場合（グループモード）
+        if len(exec_name_list) > 3:
+            group_type = exec_name_list[1]
+            exec_name = exec_name_list[2]
+            button_name = exec_name_list[3]
 
-        if exec_name.startswith(menu_type + "_"):
-            exec_name = exec_name.removeprefix(menu_type + "_")
+        # アンダーバー2つの場合（レガシーモード）
+        if len(exec_name_list) == 3:
+            exec_name = exec_name_list[1]
+            button_name = exec_name_list[2]
 
-            command = row.operator("object.aztools_shelf", text=func_name.camel_to_snake(exec_name))
+        if exec_name.startswith(menu_type):
+            command = row.operator("object.aztools_shelf", text=func_name.camel_to_snake(button_name))
 
             exec_list.append(command)
             exec_list[i].path = os.path.basename(exec)

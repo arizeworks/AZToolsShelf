@@ -1,6 +1,6 @@
 import sys
 sys.dont_write_bytecode = True
-
+from .class_register import REGIST_CLASSES
 import bpy
 import importlib
 
@@ -20,11 +20,7 @@ bl_info = {
 from . import data_path
 importlib.reload(data_path)
 
-
 # Operators
-from . import operator
-importlib.reload(operator)
-
 from .Operators import operator_shelf
 importlib.reload(operator_shelf)
 
@@ -36,15 +32,13 @@ from .UIs import ui_shelf
 importlib.reload(ui_shelf)
 
 
-regist_classes = operator.operatorclasses + ui.uiclasses
-
 def register():
-    for regist_cls in regist_classes:
-        bpy.utils.register_class(regist_cls)
+    for cls in REGIST_CLASSES:
+        bpy.utils.register_class(cls)
 
 def unregister():
-    for regist_cls in regist_classes:
-        bpy.utils.unregister_class(regist_cls)
+    for cls in REGIST_CLASSES:
+        bpy.utils.unregister_class(cls)
 
 
 if __name__ == "__main__":

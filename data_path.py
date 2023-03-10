@@ -6,6 +6,8 @@ from collections import defaultdict
 datapath = defaultdict(dict)
 aztoolspath = defaultdict(dict)
 
+button_group_type = defaultdict(dict)
+
 # Blender
 datapath["blender"]["exe"] = bpy.app.binary_path
 datapath["blender"]["addon"] = bpy.utils.user_resource('SCRIPTS') + "\\addons"
