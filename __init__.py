@@ -1,4 +1,5 @@
 import sys
+
 sys.dont_write_bytecode = True
 from .class_register import REGIST_CLASSES
 import bpy
@@ -18,23 +19,28 @@ bl_info = {
 
 # Path
 from . import data_path
+
 importlib.reload(data_path)
 
 # Operators
 from .Operators import operator_shelf
+
 importlib.reload(operator_shelf)
 
 # UIs
 from . import ui
+
 importlib.reload(ui)
 
 from .UIs import ui_shelf
+
 importlib.reload(ui_shelf)
 
 
 def register():
     for cls in REGIST_CLASSES:
         bpy.utils.register_class(cls)
+
 
 def unregister():
     for cls in REGIST_CLASSES:
