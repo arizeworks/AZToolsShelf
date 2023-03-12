@@ -16,7 +16,7 @@ def AZToolsShelf(self, context, mode=False):
         row = layout.row()
         row.label(text="Shelf Folder")
         row = layout.row(align=True)
-        row.scale_y = 1.5
+        row.scale_y = 1.2
         layout.separator()
 
     # Panelモード
@@ -25,7 +25,7 @@ def AZToolsShelf(self, context, mode=False):
         box = layout.box()
         box.label(text="Shelf Folder")
         row = box.row(align=True)
-        row.scale_y = 1.5
+        row.scale_y = 1.2
 
     open_folder = row.operator("object.aztools_shelf_folder")
 
@@ -88,7 +88,7 @@ def shelfMenu(self, menu_type, mode=False):
         layout = self.layout
         layout.label(text=func_name.camel_to_snake(menu_type))
         row = layout.row(align=True)
-        row.scale_y = 1.5
+        row.scale_y = 1.2
 
     # Panel モード
     else:
@@ -96,7 +96,7 @@ def shelfMenu(self, menu_type, mode=False):
         box = layout.box()
         box.label(text=func_name.camel_to_snake(menu_type))
         row = box.row(align=True)
-        row.scale_y = 1.5
+        row.scale_y = 1.2
 
     exec_list = []
     i = 0
@@ -133,7 +133,7 @@ def shelfMenu(self, menu_type, mode=False):
             else:
                 if not i % 2:
                     row = box.row(align=True)
-            row.scale_y = 1.5
+            row.scale_y = 1.2
 
     if mode:
         layout.separator()
