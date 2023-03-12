@@ -1,5 +1,5 @@
 from ..Functions import func_name
-from .. import data_path
+from ..AZToolsUtils import data_path
 
 import bpy
 import os

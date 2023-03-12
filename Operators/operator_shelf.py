@@ -4,7 +4,7 @@ from ..AZToolsUtils.class_register import registerClass
 from ..Functions import func_shelf
 import os
 
-from ..data_path import button_group_type
+from ..AZToolsUtils.data_path import button_group_type
 
 shelf_path = os.path.expandvars(bpy.utils.user_resource('SCRIPTS') + r"\addons\AZToolsShelf\Shelf").replace("/", os.sep)
 shelf_path = shelf_path.replace("\\", os.sep)

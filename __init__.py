@@ -18,7 +18,7 @@ bl_info = {
 }
 
 # Path
-from . import data_path
+from .AZToolsUtils import data_path
 
 importlib.reload(data_path)
 
