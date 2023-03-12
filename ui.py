@@ -1,5 +1,5 @@
 import bpy
-from .class_register import registerClass
+from .AZToolsUtils.class_register import registerClass
 from .UIs import ui_shelf
 
 

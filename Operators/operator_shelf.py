@@ -1,6 +1,6 @@
 import bpy
 import subprocess
-from ..class_register import registerClass
+from ..AZToolsUtils.class_register import registerClass
 from ..Functions import func_shelf
 import os
 

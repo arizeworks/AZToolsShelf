@@ -1,7 +1,7 @@
 import sys
 
 sys.dont_write_bytecode = True
-from .class_register import REGIST_CLASSES
+from .AZToolsUtils.class_register import REGIST_CLASSES
 import bpy
 import importlib
 
