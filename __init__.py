@@ -19,23 +19,19 @@ bl_info = {
 
 # Path
 from .AZToolsUtils import data_path
-
-importlib.reload(data_path)
-
-# Operators
 from .Operators import operator_shelf
-
-importlib.reload(operator_shelf)
-
-# UIs
+from .UIs import ui_shelf
 from . import ui
 
-importlib.reload(ui)
+import_libs = [
+    data_path,
+    operator_shelf,
+    ui_shelf,
+    ui,
+]
 
-from .UIs import ui_shelf
-
-importlib.reload(ui_shelf)
-
+for lib in import_libs:
+    importlib.reload(lib)
 
 def register():
     for cls in REGIST_CLASSES:
