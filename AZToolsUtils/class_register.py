@@ -6,10 +6,13 @@ REGIST_CLASSES = []
 def registerClass():
     def decorator(cls):
         global REGIST_CLASSES
-        regist_classes_name = []
+
+        # 重複した場合以前のクラスを削除
         for regist_cls in REGIST_CLASSES:
-            regist_classes_name += [regist_cls.__name__]
-        if cls.__name__ not in regist_classes_name:
+            if cls.__name__ == regist_cls.__name__:
+                REGIST_CLASSES.remove(regist_cls)
+
+        if cls.__name__ not in REGIST_CLASSES:
             REGIST_CLASSES += [cls]
         return cls
 
