@@ -4,6 +4,8 @@ from collections import defaultdict
 
 import configparser
 
+SHOW_CONSOLE = False
+
 datapath = defaultdict(dict)
 aztoolspath = defaultdict(dict)
 myassets = defaultdict(dict)
