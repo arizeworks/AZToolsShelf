@@ -24,7 +24,7 @@ class AZTOOLS_PT_Shelf_00(bpy.types.Panel):
         ui_shelf.AZToolsShelf(self, context, False)
 
 
-@registerClass()
+# @registerClass()
 class AZTOOLS_PT_Shelf_01(bpy.types.Panel):
     bl_label = "AZTools Shelf"
     bl_space_type = "VIEW_3D"
@@ -44,7 +44,7 @@ class AZTOOLS_PT_Shelf_02(bpy.types.Panel):
     def draw(self, context):
         ui_shelf.AZToolsShelf(self, context, False)
 
-@registerClass()
+# @registerClass()
 class AZTOOLS_PT_Shelf_03(bpy.types.Panel):
     bl_label = "AZTools Shelf"
     bl_space_type = "IMAGE_EDITOR"
@@ -62,7 +62,7 @@ class AZTOOLS_PT_Shelf_04(bpy.types.Panel):
     def draw(self, context):
         ui_shelf.AZToolsShelf(self, context, False)
 
-@registerClass()
+# @registerClass()
 class AZTOOLS_PT_Shelf_05(bpy.types.Panel):
     bl_label = "AZTools Shelf"
     bl_space_type = "NODE_EDITOR"

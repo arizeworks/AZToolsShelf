@@ -6,7 +6,10 @@ REGIST_CLASSES = []
 def registerClass():
     def decorator(cls):
         global REGIST_CLASSES
-        if cls not in REGIST_CLASSES:
+        regist_classes_name = []
+        for regist_cls in REGIST_CLASSES:
+            regist_classes_name += [regist_cls.__name__]
+        if cls.__name__ not in regist_classes_name:
             REGIST_CLASSES += [cls]
         return cls
 
